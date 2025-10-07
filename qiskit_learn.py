@@ -31,7 +31,7 @@ protocol.barrier()
 # Bob uses the classical bits to conditionally apply gates
 with protocol.if_test((a, 1)):
     protocol.x(ebit1)
-with protocol.if_test((b, &)):
+with protocol.if_test((b, 1)):
     protocol.z(ebit1)
 
 display.(protocol.draw(output="mpl"))
