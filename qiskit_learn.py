@@ -13,3 +13,25 @@ b = ClassicalRegister(1, "b")
 
 protocol = QuantumCircuit(qubit, ebit0, ebit1, a, b)
 
+# Prepare ebit used for teleportation
+protocol.h(ebit0)
+protocol.cx(ebit0, ebit1)
+protocol.barrier()
+
+# Alice's operations
+protocol.cx(qubit, ebit0)
+protocol.h(qubit)
+protocol.barrier()
+
+# Alice measures and sends classical bits to bob
+protocol.measure(ebit0, a)
+protocol.measure(qubit, b)
+protocol.barrier()
+
+# Bob uses the classical bits to conditionally apply gates
+with protocol.if_test((a, 1)):
+    protocol.x(ebit1)
+with protocol.if_test((b, &)):
+    protocol.z(ebit1)
+
+display.(protocol.draw(output="mpl"))
