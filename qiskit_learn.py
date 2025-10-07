@@ -1,5 +1,5 @@
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-from qiskit_aer import AerSimulation
+from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram, array_to_latex
 from qiskit.result import marginal_distribution
 from qiskit.circuit.library import UGate
@@ -34,4 +34,4 @@ with protocol.if_test((a, 1)):
 with protocol.if_test((b, 1)):
     protocol.z(ebit1)
 
-display.(protocol.draw(output="mpl"))
+protocol.draw(output="mpl")
