@@ -4,6 +4,7 @@ from qiskit.visualization import plot_histogram, array_to_latex
 from qiskit.result import marginal_distribution
 from qiskit.circuit.library import UGate
 from numpy import pi, random
+import matplotlib.pyplot as plt
 
 qubit = QuantumRegister(1, "Q")
 ebit0 = QuantumRegister(1, "A")
@@ -35,3 +36,4 @@ with protocol.if_test((b, 1)):
     protocol.z(ebit1)
 
 protocol.draw(output="mpl")
+plt.show()
